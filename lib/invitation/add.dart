@@ -143,7 +143,6 @@ class _AddState extends State<Add> {
     }
   }
 
-  MainInvite() => MainInvite();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

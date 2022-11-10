@@ -96,7 +96,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         username = pref.getString("username")!;
       });
-      print(username);
       final response = await http.get(Uri.parse(
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
