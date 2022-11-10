@@ -1,11 +1,19 @@
 import 'dart:async';
 import 'dart:convert';
+// import 'package:biu_project/report.dart';
+// import 'package:biu_project/scan/report_visit.dart';
 
-import 'package:evisitor_project/login_page.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:evisitor_project/invitation/invitation.dart';
+import 'package:evisitor_project/report.dart';
+import 'package:evisitor_project/scan/report_visit.dart';
+import 'package:evisitor_project/scan/scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:qr_code_scanner/src/types/barcode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'login_page.dart';
+import 'package:http/http.dart' as http;
+import 'clocking.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,8 +28,6 @@ class _HomePageState extends State<HomePage> {
   String lastName = "";
   List precenseUser = [];
   Timer? _timer;
-
-  var http;
   getPref() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var islogin = pref.getBool("is_login");
@@ -306,9 +312,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       GestureDetector(
                         onTap: () async {
-                          var materialPageRoute = MaterialPageRoute(
-                              builder: (_) => QRViewExample());
-                          Navigator.push(context, materialPageRoute);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const QRViewExample()));
                           setState(() {});
                         },
                         child: Container(
@@ -407,52 +414,42 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-QRViewExample() {}
-
-ReportVisit() {}
-
-MainInvite() {}
-
-Report() {}
-
-Clocking() {}
-
-class CustomCard extends StatelessWidget {
-  //ini adalah konstruktor, saat class dipanggil parameter konstruktor wajib diisi
-  //parameter ini akan mengisi title dan gambar pada setiap card
-  CustomCard({required this.title, required this.image});
-  String title;
-  String image;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5),
-      child: Card(
-        //menambahkan bayangan
-        elevation: 4,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        image,
-                      ),
-                      fit: BoxFit.fill)),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Center(
-                  child: Text(
-                title,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, height: 2, fontSize: 14),
-              )),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+// class CustomCard extends StatelessWidget {
+//   //ini adalah konstruktor, saat class dipanggil parameter konstruktor wajib diisi
+//   //parameter ini akan mengisi title dan gambar pada setiap card
+//   CustomCard({required this.title, required this.image});
+//   String title;
+//   String image;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(top: 5),
+//       child: Card(
+//         //menambahkan bayangan
+//         elevation: 4,
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Container(
+//               decoration: BoxDecoration(
+//                   image: DecorationImage(
+//                       image: AssetImage(
+//                         image,
+//                       ),
+//                       fit: BoxFit.fill)),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(5),
+//               child: Center(
+//                   child: Text(
+//                 title,
+//                 style: TextStyle(
+//                     fontWeight: FontWeight.bold, height: 2, fontSize: 14),
+//               )),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

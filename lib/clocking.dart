@@ -11,7 +11,6 @@ import 'package:intl/intl.dart';
 import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_page.dart';
-import 'package:evisitor_project/camerapage.dart';
 
 class Clocking extends StatefulWidget {
   const Clocking({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:evisitor_project/invitation/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
-import 'package:evisitor_project/invitation/view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../login_page.dart';
 import 'add.dart';
@@ -227,7 +227,3 @@ class MainInviteState extends State<MainInvite> {
     );
   }
 }
-
-Add() {}
-
-View({required id}) {}
